@@ -1,0 +1,11 @@
+/*
+* @name: footer.scss
+* @description: Estilos del Footer
+*/
+
+footer {
+  padding: $paddingLarge 0;
+  background-color: $black;
+  position: fixed;
+  bottom: 0;
+}
