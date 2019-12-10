@@ -8,6 +8,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(require("./usuarios/usuarios"));
+app.use(require("./users/users"));
 
 module.exports = app;

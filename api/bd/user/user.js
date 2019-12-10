@@ -1,7 +1,7 @@
 const db = require("../../bd/conexion");
 
 function getUser(res, data) {
-  const query = "CALL sp_GetUsers()";
+  const query = "CALL sp_Users_get()";
   db.query(query, (err, rows, filds) => {
     if (!err) {
       res.json(rows[0]);
@@ -16,10 +16,10 @@ function getUser(res, data) {
 }
 
 function createUser(data, res) {
-  const consulta = "CALL sp_Personas_Crear(?,?,?,?);";
+  const consulta = "CALL sp_Users_Create(?,?,?,?,?,?);";
   db.query(
     consulta,
-    [data.Nombre, data.Telefono, data.Usuario, data.newpass],
+    [data.Name, data.Email, data.Adress, data.User, data.newpass, data.Profile],
     (err, rows, filds) => {
       if (!err && rows.affectedRows > 0) {
         res.json({
@@ -29,6 +29,7 @@ function createUser(data, res) {
         });
       } else {
         return res.json({
+          rows: rows[0],
           ok: false,
           mensaje: "error de servidor",
           errors: err
